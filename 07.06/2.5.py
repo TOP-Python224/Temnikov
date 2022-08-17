@@ -1,0 +1,1 @@
+print("«Life is what happens\n", "\twhen\n".expandtabs(5), "\tyou're busy making other plans»\n".expandtabs(8), "\tJohn Lennon.".expandtabs(36))
