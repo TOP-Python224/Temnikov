@@ -8,7 +8,8 @@ def decimal_to_any(num: int, *, new_base: int = 16) -> str:
 	result = str(r)
 
 	while q > 0:
-		q, r = q // new_base, q % new_base
+		r = q % new_base
+		q = q // new_base
 		if r > 9:
 			result = str(dict1[r]) + result
 		else:
