@@ -1,10 +1,7 @@
 result = {}
 
 def math(string: int | float) -> dict:
-	"""Функция принимает на вход один аргумент: list, tuple или str, 
-    содержащий только целые или вещественные числа.
-    Функция возвращает отсортированный словарь для
-    среднего арифметического, геометрического, квадратичного и гармонического значения аргументов."""
+	"""Функция принимает на вход один аргумент: list, tuple или str, содержащий только целые или вещественные числа. Функция возвращает отсортированный словарь для среднего арифметического, геометрического, квадратичного и гармонического значения аргументов."""
 	if type(string) not in (str, list, tuple):
 		return None
 
@@ -22,7 +19,7 @@ def math(string: int | float) -> dict:
 	arith = 0
 	geom = 1
 	quad = 0
-	garm = 0
+	harm = 0
 	
 	for num in string:
 		if type(num) not in (int, float):
@@ -31,12 +28,12 @@ def math(string: int | float) -> dict:
 			arith += num
 			geom *= num
 			quad += num * num
-			garm += 1 / num
-        
+			harm += 1 / num
+
 	result['arithmetic'] = arith / l
-	result['geometric'] = pow(geom, 1 / l)
-	result['quadratic'] = pow(quad / l, 1 / 2)
-	result['garmonic'] = l / garm
+	result['geometric'] = pow(geom, 1/l)
+	result['quadratic'] = pow(quad/l, 1/2)
+	result['harmonic'] = l / harm
 
 	sorted_result = sorted(result.items(), key=lambda i: i[1])
 	sorted_result = dict(sorted_result)
@@ -51,8 +48,8 @@ print(math('1 2 3 4 5'))
 print(math((1, 2, 3)))
 print(math([1, 2, 3, 4, 5]))
 
-# Результат:
 
+# stdout:
 # None
 # None
 # None
