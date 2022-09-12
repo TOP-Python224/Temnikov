@@ -11,8 +11,8 @@ for word in words:
 	i += 1
 print(words)
 
+
 # Результат:
 # Введите текст:
 # Contractions include: don’t, isn’t, and wouldn’t.
-
 # ['Contractions', 'include', 'don’t', 'isn’t', 'and', 'wouldn’t']

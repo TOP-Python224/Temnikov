@@ -1,7 +1,6 @@
 VOWELS = ('a', 'e', 'i', 'o', 'u')
 
 word = ""
-
 while True:
 	word = input("Введите текст: ")
 	wordList = word.lower().split()
@@ -9,7 +8,7 @@ while True:
 		break
 	else:
 		for word in wordList:
-			if (word[0] in VOWELS):
+			if word[0] in VOWELS:
 				word = word + "way"
 				print(word)
 			else:
@@ -19,8 +18,8 @@ while True:
 						print(word)
 						break
 
-# Введите текст: I have loved you all along
 
+# Введите текст: I have loved you all along
 # iway
 # avehay
 # ovedlay

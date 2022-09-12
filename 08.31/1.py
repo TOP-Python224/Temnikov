@@ -29,3 +29,4 @@ print(type(math_func(lambda k, x: k / x, 10, 5)))
 
 
 # ИТОГ: отлично — 6/6
+ 

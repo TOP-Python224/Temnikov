@@ -10,21 +10,19 @@ for word in words:
 	i += 1
 
 l = len(words)
-
 for i in range(l//2):
-	if words[i] != words[-1- i]:
-		print("Не палидром")
+	if words[i] != words[-1-i]:
+		print("Не палиндром")
 		quit()
 
-print("Палидром") 
+print("Палиндром")
+
 
 # Результат
 # Введите строку:
 # Is it crazy how saying sentences backwards creates backwards sentences saying how crazy it is?
-
 # Палидром
 
 # Введите строку:
 # Contractions include: don’t, isn’t, and wouldn’t
-
 # Не палидром

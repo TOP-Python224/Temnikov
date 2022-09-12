@@ -35,6 +35,7 @@ while True:
 	print(wordList)
 	print(piglist)
 
+
 # Результат:
 # Введите слово: Contractions include: don’t, isn’t, and wouldn’t.
 
