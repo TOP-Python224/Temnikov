@@ -21,13 +21,13 @@ def decimal_to_any(num: int, *, new_base: int = 16) -> str:
 def any_to_decimal(num: int, *, base: int = 16) -> int:
 	"""Функция преобразует число num в системе счисления base = 16 по умолчанию, в десятичное число."""
 	result = 0
-	lenght = len(num)
-	for item in range(lenght):
+	length = len(num)
+	for item in range(length):
 		if num[item].isalpha():
-			result += (dict2[num[item].title()]) * base**(lenght-1)
+			result += (dict2[num[item].title()]) * base**(length-1)
 		else:
-			result += int(num[item]) * base**(lenght-1)
-		lenght -= 1
+			result += int(num[item]) * base**(length-1)
+		length -= 1
 	return result
 
 
