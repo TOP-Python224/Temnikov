@@ -1,18 +1,23 @@
+# КОММЕНТАРИЙ: очень рад, что вы нашли этот модуль, пользуйтесь им и дальше
 from pathlib import Path
 
 
 def audio_file_processing(
+		# КОММЕНТАРИЙ: согласен
 		# Путь к файлу является максимально информативным даже при отсутствии ключа
 		path_file: str,
 		/,
+		# КОММЕНТАРИЙ: хорошо
 		# Форматов файла насчитывается огромное множество, поэтому для простоты использования возможно использование как с ключом так и без него
 		format: int | str,
 		*,
+		# КОММЕНТАРИЙ: не "проще", а "эффективней" — в остальном верно
 		# Перечисленные параметры схожи и имеют числовое значение. Для того чтобы не спутать передаваемые аргументы проще сделать их ключевыми
 		channels: int | str,
 		sampling: int | str,
 		bit_depth: int | str
 ) -> str:
+	# ИСПРАВИТЬ: слово "функция" в строке документации избыточно, строка документации начинается с глагола
 	"""Функция принимает параметры аудио-файла, проверяет корректность переданных аргументов и выводит на печать результат проверки."""
 	
 	song_file_path = Path(path_file)
@@ -22,26 +27,31 @@ def audio_file_processing(
 	bit_depth_value = (8, 16, 24, 32)
 	result = ''
 
+	# ИСПРАВИТЬ: определённо лучше преобразовать в один регистр и сравнить со строкой в таком же регистре
 	if song_file_path.suffix[1:] == 'wav' or song_file_path.suffix[1:] == 'WAV':
 		result += f"{path_file = } is Correct\n"
 	else:
 		result += f"{path_file = } is not Correct\n"
 
+	# ИСПРАВИТЬ: предусмотреть вариант, когда в параметр передаётся строка
 	if format in range(0, 10000):
 		result += f"{format = } is Correct\n"
 	else:
 		result += f"{format = } is not Correct\n"
 
+	# ИСПРАВИТЬ: предусмотреть вариант, когда в параметр передаётся строка
 	if channels in range(1, 11):
 		result += f"{channels = } is Correct\n"
 	else:
 		result += f"{channels = } is not Correct\n"
 
+	# ИСПРАВИТЬ: предусмотреть вариант, когда в параметр передаётся строка
 	if sampling in sampling_value:
 		result += f"{sampling = } is Correct\n"
 	else:
 		result += f"{sampling = } is not Correct\n"
 
+	# ИСПРАВИТЬ: предусмотреть вариант, когда в параметр передаётся строка
 	if bit_depth in bit_depth_value:
 		result += f"{bit_depth = } is Correct\n"
 	else:
@@ -86,3 +96,6 @@ print(audio_file_processing("/audio/music/file_name.wav", 999, 8, sampling=16000
 #   File "D:\!PYTHON\Python\GitHub_HW\Temnikov\08.24\2.py", line 48, in <module>
 #     print(audio_file_processing("/audio/music/file_name.wav", 999, 8, sampling=16000, bit_depth=16))
 # TypeError: audio_file_processing() takes 2 positional arguments but 3 positional arguments (and 2 keyword-only arguments) were given
+
+
+# ИТОГ: хорошо — 3/4

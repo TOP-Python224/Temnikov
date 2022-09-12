@@ -1,8 +1,10 @@
+# ИСПРАВИТЬ: имена должны быть значащими — что такое dict1, dict2?
 dict1 = {10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
 dict2 = {v: k for k, v in dict1.items()}
 
 
 def decimal_to_any(num: int, *, new_base: int = 16) -> str:
+	# ИСПРАВИТЬ: слово "функция" в строке документации избыточно, строка документации начинается с глагола
 	"""Функция преобразует десятичное число num в число в системе счисления new_base = 16, по умолчанию."""
 	q = num // new_base
 	r = num % new_base
@@ -18,15 +20,21 @@ def decimal_to_any(num: int, *, new_base: int = 16) -> str:
 	return result
 
 
+# ИСПРАВИТЬ: аннотацию параметра num — вы ведь ожидаете строку, и работаете с параметром, как со строкой
 def any_to_decimal(num: int, *, base: int = 16) -> int:
+	# ИСПРАВИТЬ: слово "функция" в строке документации избыточно, строка документации начинается с глагола
 	"""Функция преобразует число num в системе счисления base = 16 по умолчанию, в десятичное число."""
 	result = 0
 	length = len(num)
-	for item in range(length):
-		if num[item].isalpha():
-			result += (dict2[num[item].title()]) * base**(length-1)
+	# ИСПОЛЬЗОВАТЬ: встроенную функцию enumerate() вместе с функцией range() — выполните enumerate() отдельно, посмотрите, как она работает
+	# for i, j in enumerate(range(length-1, -1, -1)):
+	# ИСПОЛЬЗОВАТЬ: для индексов мы используем имена i, j, k
+	for i in range(length):
+		if num[i].isalpha():
+			# ИСПРАВИТЬ: метод upper() приведёт здесь к тому же результату и быстрее
+			result += (dict2[num[i].title()]) * base**(length-1)
 		else:
-			result += int(num[item]) * base**(length-1)
+			result += int(num[i]) * base**(length-1)
 		length -= 1
 	return result
 
@@ -35,6 +43,7 @@ def any_to_any(num: str, base_default: int, new_base_default: int) -> str:
 	"""Функция преобразует число num из исходной системы счисления в новую."""
 	return decimal_to_any(
 		any_to_decimal(
+			# ИСПРАВИТЬ: вы уже написали в сигнатуре функции any_to_any(), что ожидаете объект str для параметра num — нет необходимости преобразовывать
 			str(num),
 			base=base_default
 		),
@@ -68,3 +77,6 @@ else:
 # Исходная система счисления (2-16): 2
 # Введите требуемую систему счисления (2–16): 10
 # 9
+
+
+# ИТОГ: хорошо — 4/5
