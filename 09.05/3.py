@@ -38,6 +38,10 @@ poem = """У лукоморья дуб зелёный;
 
 text = ''
 
+# ИСПОЛЬЗОВАТЬ: способ вычислить все не буквенные символы
+cyrillic = {chr(char_code) for char_code in range(1072, 1104)} | {'ё'}
+punctuation = set(poem.lower()) - set(string.whitespace) - cyrillic
+
 for char in poem.lower():
     if char not in string.punctuation + '—…':
         if char in string.whitespace:
@@ -45,19 +49,21 @@ for char in poem.lower():
         else:
             text += char
 
-format_text = set(poem.lower()) - set(string.whitespace + string.punctuation + '—…')
+letters = set(poem.lower()) - set(string.whitespace + string.punctuation + '—…')
 result = {}
-for char in format_text:
+for char in letters:
     result[char] = {}
+    # ИСПРАВИТЬ: текст-то неподготовленный, знаки препинания тоже к длине слова добавляются
     for word in poem.split():
         word_len = len(word)
         if char in word:
+            # КОММЕНТАРИЙ: а вот словарный метод здесь очень кстати, хорошо
             result[char][word_len] = result[char].setdefault(word_len, 0) + 1
 
 pprint(result)
 
-# stdout:
 
+# stdout:
 # {'а': {2: 5, 3: 15, 4: 3, 5: 5, 6: 7, 7: 9, 8: 4, 9: 1, 10: 2},
 #  'б': {3: 4, 4: 3, 5: 2, 6: 2, 7: 3, 9: 1},
 #  'в': {1: 1, 3: 1, 4: 2, 5: 3, 6: 2, 7: 7, 8: 3, 9: 2, 10: 1},
@@ -88,3 +94,6 @@ pprint(result)
 #  'ю': {5: 3},
 #  'я': {1: 2, 4: 2, 5: 1, 6: 4, 7: 3, 9: 2},
 #  'ё': {3: 2, 4: 2, 5: 2, 6: 3, 8: 2}}
+
+
+# ИТОГ: хорошо — 4/6
